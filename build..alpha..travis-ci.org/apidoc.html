@@ -1,0 +1,854 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/ericf/express3-handlebars"
+
+    >express3-handlebars (v0.5.2)</a>
+</h1>
+<h4>A Handlebars view engine for Express which doesn't suck.</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.express3-handlebars">module express3-handlebars</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express3-handlebars.express3-handlebars">
+            function <span class="apidocSignatureSpan"></span>express3-handlebars
+            <span class="apidocSignatureSpan">(config)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express3-handlebars.ExpressHandlebars">
+            function <span class="apidocSignatureSpan">express3-handlebars.</span>ExpressHandlebars
+            <span class="apidocSignatureSpan">(config)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express3-handlebars.create">
+            function <span class="apidocSignatureSpan">express3-handlebars.</span>create
+            <span class="apidocSignatureSpan">(config)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">express3-handlebars.</span>ExpressHandlebars.prototype</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.express3-handlebars.ExpressHandlebars">module express3-handlebars.ExpressHandlebars</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express3-handlebars.ExpressHandlebars.ExpressHandlebars">
+            function <span class="apidocSignatureSpan">express3-handlebars.</span>ExpressHandlebars
+            <span class="apidocSignatureSpan">(config)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express3-handlebars.ExpressHandlebars.getHandlebarsSemver">
+            function <span class="apidocSignatureSpan">express3-handlebars.ExpressHandlebars.</span>getHandlebarsSemver
+            <span class="apidocSignatureSpan">(handlebars)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">express3-handlebars.ExpressHandlebars.</span>_dirCache</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">express3-handlebars.ExpressHandlebars.</span>_fileCache</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">express3-handlebars.ExpressHandlebars.</span>_pendingReads</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.express3-handlebars.ExpressHandlebars.prototype">module express3-handlebars.ExpressHandlebars.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express3-handlebars.ExpressHandlebars.prototype._getPartialName">
+            function <span class="apidocSignatureSpan">express3-handlebars.ExpressHandlebars.prototype.</span>_getPartialName
+            <span class="apidocSignatureSpan">(filePath)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express3-handlebars.ExpressHandlebars.prototype._loadDir">
+            function <span class="apidocSignatureSpan">express3-handlebars.ExpressHandlebars.prototype.</span>_loadDir
+            <span class="apidocSignatureSpan">(dirPath, options, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express3-handlebars.ExpressHandlebars.prototype._loadFile">
+            function <span class="apidocSignatureSpan">express3-handlebars.ExpressHandlebars.prototype.</span>_loadFile
+            <span class="apidocSignatureSpan">(filePath, options, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express3-handlebars.ExpressHandlebars.prototype._renderTemplate">
+            function <span class="apidocSignatureSpan">express3-handlebars.ExpressHandlebars.prototype.</span>_renderTemplate
+            <span class="apidocSignatureSpan">(template, context, options, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express3-handlebars.ExpressHandlebars.prototype._resolveLayoutPath">
+            function <span class="apidocSignatureSpan">express3-handlebars.ExpressHandlebars.prototype.</span>_resolveLayoutPath
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express3-handlebars.ExpressHandlebars.prototype.loadPartials">
+            function <span class="apidocSignatureSpan">express3-handlebars.ExpressHandlebars.prototype.</span>loadPartials
+            <span class="apidocSignatureSpan">(options, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express3-handlebars.ExpressHandlebars.prototype.loadTemplate">
+            function <span class="apidocSignatureSpan">express3-handlebars.ExpressHandlebars.prototype.</span>loadTemplate
+            <span class="apidocSignatureSpan">(filePath, options, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express3-handlebars.ExpressHandlebars.prototype.loadTemplates">
+            function <span class="apidocSignatureSpan">express3-handlebars.ExpressHandlebars.prototype.</span>loadTemplates
+            <span class="apidocSignatureSpan">(dirPath, options, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express3-handlebars.ExpressHandlebars.prototype.render">
+            function <span class="apidocSignatureSpan">express3-handlebars.ExpressHandlebars.prototype.</span>render
+            <span class="apidocSignatureSpan">(filePath, options, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express3-handlebars.ExpressHandlebars.prototype.renderView">
+            function <span class="apidocSignatureSpan">express3-handlebars.ExpressHandlebars.prototype.</span>renderView
+            <span class="apidocSignatureSpan">(viewPath, options, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">express3-handlebars.ExpressHandlebars.prototype.</span>extname</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">express3-handlebars.ExpressHandlebars.prototype.</span>layoutsDir</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">express3-handlebars.ExpressHandlebars.prototype.</span>partialsDir</span>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.express3-handlebars" id="apidoc.module.express3-handlebars">module express3-handlebars</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.express3-handlebars.express3-handlebars" id="apidoc.element.express3-handlebars.express3-handlebars">
+        function <span class="apidocSignatureSpan"></span>express3-handlebars
+        <span class="apidocSignatureSpan">(config)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function exphbs(config) {
+    return exphbs.create(config).engine;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express3-handlebars.ExpressHandlebars" id="apidoc.element.express3-handlebars.ExpressHandlebars">
+        function <span class="apidocSignatureSpan">express3-handlebars.</span>ExpressHandlebars
+        <span class="apidocSignatureSpan">(config)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ExpressHandlebars(config) {
+    config || (config = {});
+
+    var handlebars = config.handlebars || require(&#x27;handlebars&#x27;);
+
+    if (&#x27;extname&#x27;     in config) { this.extname     = config.extname;     }
+    if (&#x27;layoutsDir&#x27;  in config) { this.layoutsDir  = config.layoutsDir;  }
+    if (&#x27;partialsDir&#x27; in config) { this.partialsDir = config.partialsDir; }
+
+    if(this.extname[0] !== &#x27;.&#x27;) { this.extname = &#x27;.&#x27; + this.extname; }
+
+    this.defaultLayout = config.defaultLayout;
+    this.handlebars    = handlebars;
+    this.helpers       = config.helpers;
+
+    this.handlebarsVersion = ExpressHandlebars.getHandlebarsSemver(handlebars);
+
+    this.compiled    = {};
+    this.precompiled = {};
+
+    this.engine = this.renderView.bind(this);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express3-handlebars.create" id="apidoc.element.express3-handlebars.create">
+        function <span class="apidocSignatureSpan">express3-handlebars.</span>create
+        <span class="apidocSignatureSpan">(config)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">create = function (config) {
+    return new ExpressHandlebars(config);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+`ExpressHandlebars`, allowing access to the full API:
+
+```javascript
+var express = require(&#x27;express&#x27;),
+    exphbs  = require(&#x27;express3-handlebars&#x27;),
+
+    app = express(),
+    hbs = exphbs.<span class="apidocCodeKeywordSpan">create</span>({ /* config */ });
+
+// Register `hbs.engine` with the Express app.
+app.engine(&#x27;handlebars&#x27;, hbs.engine);
+app.set(&#x27;view engine&#x27;, &#x27;handlebars&#x27;);
+
+// ...still have a reference to `hbs`, on which methods like `loadPartials()`
+// can be called.
+...</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.express3-handlebars.ExpressHandlebars" id="apidoc.module.express3-handlebars.ExpressHandlebars">module express3-handlebars.ExpressHandlebars</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.express3-handlebars.ExpressHandlebars.ExpressHandlebars" id="apidoc.element.express3-handlebars.ExpressHandlebars.ExpressHandlebars">
+        function <span class="apidocSignatureSpan">express3-handlebars.</span>ExpressHandlebars
+        <span class="apidocSignatureSpan">(config)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ExpressHandlebars(config) {
+    config || (config = {});
+
+    var handlebars = config.handlebars || require(&#x27;handlebars&#x27;);
+
+    if (&#x27;extname&#x27;     in config) { this.extname     = config.extname;     }
+    if (&#x27;layoutsDir&#x27;  in config) { this.layoutsDir  = config.layoutsDir;  }
+    if (&#x27;partialsDir&#x27; in config) { this.partialsDir = config.partialsDir; }
+
+    if(this.extname[0] !== &#x27;.&#x27;) { this.extname = &#x27;.&#x27; + this.extname; }
+
+    this.defaultLayout = config.defaultLayout;
+    this.handlebars    = handlebars;
+    this.helpers       = config.helpers;
+
+    this.handlebarsVersion = ExpressHandlebars.getHandlebarsSemver(handlebars);
+
+    this.compiled    = {};
+    this.precompiled = {};
+
+    this.engine = this.renderView.bind(this);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express3-handlebars.ExpressHandlebars.getHandlebarsSemver" id="apidoc.element.express3-handlebars.ExpressHandlebars.getHandlebarsSemver">
+        function <span class="apidocSignatureSpan">express3-handlebars.ExpressHandlebars.</span>getHandlebarsSemver
+        <span class="apidocSignatureSpan">(handlebars)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getHandlebarsSemver = function (handlebars) {
+    var version = handlebars.VERSION || &#x27;&#x27;;
+
+    // Makes sure the Handlebars version is a valid semver.
+    if (version &#x26;&#x26; !semver.valid(version)) {
+        version = version.replace(/(\d\.\d)\.(\D.*)/, &#x27;$1.0-$2&#x27;);
+    }
+
+    return version;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.express3-handlebars.ExpressHandlebars.prototype" id="apidoc.module.express3-handlebars.ExpressHandlebars.prototype">module express3-handlebars.ExpressHandlebars.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.express3-handlebars.ExpressHandlebars.prototype._getPartialName" id="apidoc.element.express3-handlebars.ExpressHandlebars.prototype._getPartialName">
+        function <span class="apidocSignatureSpan">express3-handlebars.ExpressHandlebars.prototype.</span>_getPartialName
+        <span class="apidocSignatureSpan">(filePath)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_getPartialName = function (filePath) {
+    var extRegex = new RegExp(this.extname + &#x27;$&#x27;),
+        name     = filePath.replace(extRegex, &#x27;&#x27;),
+        version  = this.handlebarsVersion;
+
+    // Fixes a Handlebars bug in versions prior to 1.0.rc.2 which caused
+    // partials with &#x22;/&#x22;s in their name to not be found.
+    // https://github.com/wycats/handlebars.js/pull/389
+    if (version &#x26;&#x26; !semver.satisfies(version, &#x27;&#x3e;=1.0.0-rc.2&#x27;)) {
+        name = name.replace(&#x27;/&#x27;, &#x27;.&#x27;);
+    }
+
+    return name;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express3-handlebars.ExpressHandlebars.prototype._loadDir" id="apidoc.element.express3-handlebars.ExpressHandlebars.prototype._loadDir">
+        function <span class="apidocSignatureSpan">express3-handlebars.ExpressHandlebars.prototype.</span>_loadDir
+        <span class="apidocSignatureSpan">(dirPath, options, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_loadDir = function (dirPath, options, callback) {
+    dirPath = path.resolve(dirPath);
+
+    var dirCache     = ExpressHandlebars._dirCache,
+        pendingReads = ExpressHandlebars._pendingReads,
+        dir          = options.cache &#x26;&#x26; dirCache[dirPath],
+        callbacks, pattern;
+
+    if (dir) {
+        callback(null, dir.concat());
+        return;
+    }
+
+    callbacks = pendingReads[dirPath];
+
+    if (callbacks) {
+        callbacks.push(callback);
+        return;
+    }
+
+    callbacks = pendingReads[dirPath] = [callback];
+    pattern   = &#x27;**/*&#x27; + this.extname;
+
+    glob(pattern, {cwd: dirPath}, function (err, dir) {
+        if (!err) {
+            dirCache[dirPath] = dir;
+        }
+
+        while (callbacks.length) {
+            callbacks.shift().call(null, err, dir &#x26;&#x26; dir.concat());
+        }
+
+        delete pendingReads[dirPath];
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express3-handlebars.ExpressHandlebars.prototype._loadFile" id="apidoc.element.express3-handlebars.ExpressHandlebars.prototype._loadFile">
+        function <span class="apidocSignatureSpan">express3-handlebars.ExpressHandlebars.prototype.</span>_loadFile
+        <span class="apidocSignatureSpan">(filePath, options, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_loadFile = function (filePath, options, callback) {
+    filePath = path.resolve(filePath);
+
+    var fileCache    = ExpressHandlebars._fileCache,
+        pendingReads = ExpressHandlebars._pendingReads,
+        file         = options.cache &#x26;&#x26; fileCache[filePath],
+        callbacks;
+
+    if (file) {
+        callback(null, file);
+        return;
+    }
+
+    callbacks = pendingReads[filePath];
+
+    if (callbacks) {
+        callbacks.push(callback);
+        return;
+    }
+
+    callbacks = pendingReads[filePath] = [callback];
+
+    fs.readFile(filePath, &#x27;utf8&#x27;, function (err, file) {
+        if (!err) {
+            fileCache[filePath] = file;
+        }
+
+        while (callbacks.length) {
+            callbacks.shift().call(null, err, file);
+        }
+
+        delete pendingReads[filePath];
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express3-handlebars.ExpressHandlebars.prototype._renderTemplate" id="apidoc.element.express3-handlebars.ExpressHandlebars.prototype._renderTemplate">
+        function <span class="apidocSignatureSpan">express3-handlebars.ExpressHandlebars.prototype.</span>_renderTemplate
+        <span class="apidocSignatureSpan">(template, context, options, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_renderTemplate = function (template, context, options, callback) {
+    var output;
+
+    try {
+        output = template(context, options);
+        callback(null, output);
+    } catch (ex) {
+        callback(ex);
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express3-handlebars.ExpressHandlebars.prototype._resolveLayoutPath" id="apidoc.element.express3-handlebars.ExpressHandlebars.prototype._resolveLayoutPath">
+        function <span class="apidocSignatureSpan">express3-handlebars.ExpressHandlebars.prototype.</span>_resolveLayoutPath
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_resolveLayoutPath = function (options) {
+    // Makes sure to interpret falsy `options.layout` values as no layout.
+    var layoutPath = &#x27;layout&#x27; in options ? options.layout :
+            this.defaultLayout;
+
+    if (!layoutPath) {
+        return null;
+    }
+
+    if (!path.extname(layoutPath)) {
+        layoutPath += this.extname;
+    }
+
+    if (layoutPath[0] !== &#x27;/&#x27;) {
+        layoutPath = path.join(this.layoutsDir, layoutPath);
+    }
+
+    return layoutPath;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express3-handlebars.ExpressHandlebars.prototype.loadPartials" id="apidoc.element.express3-handlebars.ExpressHandlebars.prototype.loadPartials">
+        function <span class="apidocSignatureSpan">express3-handlebars.ExpressHandlebars.prototype.</span>loadPartials
+        <span class="apidocSignatureSpan">(options, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">loadPartials = function (options, callback) {
+    if (arguments.length &#x3c; 2 &#x26;&#x26; typeof options === &#x27;function&#x27;) {
+        callback = options;
+        options  = {};
+    }
+
+    options || (options = {});
+
+    function load(dirs, options, callback) {
+        Array.isArray(dirs) || (dirs = [dirs]);
+        var loadTemplates = this.loadTemplates.bind(this);
+
+        async.map(dirs, function (dir, callback) {
+            loadTemplates(dir, options, callback);
+        }, callback);
+    }
+
+    function mapPartials(dirs, callback) {
+        var getPartialName = this._getPartialName.bind(this),
+            partials;
+
+        partials = dirs.reduce(function (partials, templates) {
+            Object.keys(templates).forEach(function (filePath) {
+                partials[getPartialName(filePath)] = templates[filePath];
+            });
+
+            return partials;
+        }, {});
+
+        callback(null, partials);
+    }
+
+    async.waterfall([
+        load.bind(this, this.partialsDir, options),
+        mapPartials.bind(this)
+    ], callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```
+
+`loadPartials()` would produce the following result:
+
+```javascript
+var hbs = require(&#x27;express3-handlebars&#x27;).create();
+
+hbs.<span class="apidocCodeKeywordSpan">loadPartials</span>(function (err, partials) {
+    console.log(partials);
+    // =&#x3e; { &#x27;foo.bar&#x27;: [Function],
+    // =&#x3e;    title: [Function] }
+});
+```
+
+**Note:** The partial name `&#x22;foo.bar&#x22;` would ideally be `&#x22;foo/bar&#x22;`, but this is
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express3-handlebars.ExpressHandlebars.prototype.loadTemplate" id="apidoc.element.express3-handlebars.ExpressHandlebars.prototype.loadTemplate">
+        function <span class="apidocSignatureSpan">express3-handlebars.ExpressHandlebars.prototype.</span>loadTemplate
+        <span class="apidocSignatureSpan">(filePath, options, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">loadTemplate = function (filePath, options, callback) {
+    filePath = path.resolve(filePath);
+
+    if (arguments.length &#x3c; 3 &#x26;&#x26; typeof options === &#x27;function&#x27;) {
+        callback = options;
+        options  = {};
+    }
+
+    options || (options = {});
+
+    var precompiled = options.precompiled,
+        cache       = precompiled ? this.precompiled : this.compiled,
+        template    = options.cache &#x26;&#x26; cache[filePath],
+        compile;
+
+    if (template) {
+        callback(null, template);
+        return;
+    }
+
+    compile = this.handlebars[precompiled ? &#x27;precompile&#x27; : &#x27;compile&#x27;];
+
+    this._loadFile(filePath, options, function (err, file) {
+        if (err) { return callback(err); }
+
+        try {
+            template = cache[filePath] = compile(file);
+            callback(null, template);
+        } catch (ex) {
+            callback(ex);
+        }
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express3-handlebars.ExpressHandlebars.prototype.loadTemplates" id="apidoc.element.express3-handlebars.ExpressHandlebars.prototype.loadTemplates">
+        function <span class="apidocSignatureSpan">express3-handlebars.ExpressHandlebars.prototype.</span>loadTemplates
+        <span class="apidocSignatureSpan">(dirPath, options, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">loadTemplates = function (dirPath, options, callback) {
+    if (arguments.length &#x3c; 3 &#x26;&#x26; typeof options === &#x27;function&#x27;) {
+        callback = options;
+        options  = {};
+    }
+
+    options || (options = {});
+
+    function load(filePath, callback) {
+        this.loadTemplate(path.join(dirPath, filePath), options, callback);
+    }
+
+    function mapTemplates(filePaths, callback) {
+        async.map(filePaths, load.bind(this), function (err, templates) {
+            if (err) { return callback(err); }
+
+            var map = filePaths.reduce(function (map, filePath, i) {
+                map[filePath] = templates[i];
+                return map;
+            }, {});
+
+            callback(null, map);
+        });
+    }
+
+    async.waterfall([
+        this._loadDir.bind(this, dirPath, options),
+        mapTemplates.bind(this)
+    ], callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express3-handlebars.ExpressHandlebars.prototype.render" id="apidoc.element.express3-handlebars.ExpressHandlebars.prototype.render">
+        function <span class="apidocSignatureSpan">express3-handlebars.ExpressHandlebars.prototype.</span>render
+        <span class="apidocSignatureSpan">(filePath, options, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">render = function (filePath, options, callback) {
+    if (arguments.length &#x3c; 3 &#x26;&#x26; typeof options === &#x27;function&#x27;) {
+        callback = options;
+        options  = {};
+    }
+
+    options || (options = {});
+
+    var helpers = extend({},
+                this.handlebars.helpers, this.helpers, options.helpers);
+
+    function loadTemplates(callback) {
+        async.parallel({
+            partials: this.loadPartials.bind(this, options),
+            template: this.loadTemplate.bind(this, filePath, options)
+        }, callback);
+    }
+
+    function renderTemplate(templates, callback) {
+        this._renderTemplate(templates.template, options, {
+            helpers : helpers,
+            partials: templates.partials
+        }, callback);
+    }
+
+    // Force `{precompiled: false}` option, before passing `options` along
+    // to `getPartials()` and `getTemplate()` methods.
+    if (options.precompiled) {
+        options = extend({}, options, {precompiled: false});
+    }
+
+    async.waterfall([
+        loadTemplates.bind(this),
+        renderTemplate.bind(this)
+    ], callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+    app = express();
+
+app.engine(&#x27;handlebars&#x27;, exphbs({defaultLayout: &#x27;main&#x27;}));
+app.set(&#x27;view engine&#x27;, &#x27;handlebars&#x27;);
+
+app.get(&#x27;/&#x27;, function (req, res) {
+    res.<span class="apidocCodeKeywordSpan">render</span>(&#x27;home&#x27;);
+});
+
+app.listen(3000);
+```
+
+**views/layouts/main.handlebars:**
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express3-handlebars.ExpressHandlebars.prototype.renderView" id="apidoc.element.express3-handlebars.ExpressHandlebars.prototype.renderView">
+        function <span class="apidocSignatureSpan">express3-handlebars.ExpressHandlebars.prototype.</span>renderView
+        <span class="apidocSignatureSpan">(viewPath, options, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">renderView = function (viewPath, options, callback) {
+    if (arguments.length &#x3c; 3 &#x26;&#x26; typeof options === &#x27;function&#x27;) {
+        callback = options;
+        options  = {};
+    }
+
+    options || (options = {});
+
+    var layoutPath = this._resolveLayoutPath(options);
+
+    function renderLayout(body, callback) {
+        var context = extend({}, options, {body: body});
+        this.render(layoutPath, context, callback);
+    }
+
+    // Simple render when no layout is used.
+    if (!layoutPath) {
+        this.render.apply(this, arguments);
+        return;
+    }
+
+    // Force `{precompiled: false}` option, before passing options along to
+    // `getPartials()` and `getTemplate()` methods.
+    if (options.precompiled) {
+        options = extend({}, options, {precompiled: false});
+    }
+
+    async.waterfall([
+        this.render.bind(this, viewPath, options),
+        renderLayout.bind(this)
+    ], callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
