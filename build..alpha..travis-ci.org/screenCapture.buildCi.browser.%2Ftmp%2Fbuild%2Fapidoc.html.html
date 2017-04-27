@@ -307,21 +307,21 @@
     return new ExpressHandlebars(config);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-`ExpressHandlebars`, allowing access to the full API:
 
-```javascript
-var express = require('express'),
-    exphbs  = require('express3-handlebars'),
 
-    app = express(),
-    hbs = exphbs.<span class="apidocCodeKeywordSpan">create</span>({ /* config */ });
 
-// Register `hbs.engine` with the Express app.
-app.engine('handlebars', hbs.engine);
-app.set('view engine', 'handlebars');
 
-// ...still have a reference to `hbs`, on which methods like `loadPartials()`
-// can be called.
+var ExpressHandlebars = require('./lib/express-handlebars');
+
+function exphbs(config) {
+    return exphbs.<span class="apidocCodeKeywordSpan">create</span>(config).engine;
+}
+
+exphbs.create = function (config) {
+    return new ExpressHandlebars(config);
+};
+
+exphbs.ExpressHandlebars = ExpressHandlebars;
 ...</pre></li>
     </ul>
 
@@ -385,7 +385,22 @@ app.set('view engine', 'handlebars');
 
     return version;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+    if(this.extname[0] !== '.') { this.extname = '.' + this.extname; }
+
+    this.defaultLayout = config.defaultLayout;
+    this.handlebars    = handlebars;
+    this.helpers       = config.helpers;
+
+    this.handlebarsVersion = ExpressHandlebars.<span class="apidocCodeKeywordSpan">getHandlebarsSemver</span>(handlebars);
+
+    this.compiled    = {};
+    this.precompiled = {};
+
+    this.engine = this.renderView.bind(this);
+}
+...</pre></li>
     </ul>
 
 
@@ -515,7 +530,23 @@ app.set('view engine', 'handlebars');
         delete pendingReads[filePath];
     });
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+        if (template) {
+callback(null, template);
+return;
+        }
+
+        compile = this.handlebars[precompiled ? 'precompile' : 'compile'];
+
+        this.<span class="apidocCodeKeywordSpan">_loadFile</span>(filePath, options, function (err, file) {
+if (err) { return callback(err); }
+
+try {
+    template = cache[filePath] = compile(file);
+    callback(null, template);
+} catch (ex) {
+    callback(ex);
+...</pre></li>
     </ul>
 
 
@@ -537,7 +568,23 @@ app.set('view engine', 'handlebars');
         callback(ex);
     }
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    async.parallel({
+        partials: this.loadPartials.bind(this, options),
+        template: this.loadTemplate.bind(this, filePath, options)
+    }, callback);
+}
+
+function renderTemplate(templates, callback) {
+    this.<span class="apidocCodeKeywordSpan">_renderTemplate</span>(templates.template, options, {
+        helpers : helpers,
+        partials: templates.partials
+    }, callback);
+}
+
+// Force `{precompiled: false}` option, before passing `options` along
+// to `getPartials()` and `getTemplate()` methods.
+...</pre></li>
     </ul>
 
 
@@ -568,7 +615,23 @@ app.set('view engine', 'handlebars');
 
     return layoutPath;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+if (arguments.length &lt; 3 &amp;&amp; typeof options === 'function') {
+    callback = options;
+    options  = {};
+}
+
+options || (options = {});
+
+var layoutPath = this.<span class="apidocCodeKeywordSpan">_resolveLayoutPath</span>(options);
+
+function renderLayout(body, callback) {
+    var context = extend({}, options, {body: body});
+    this.render(layoutPath, context, callback);
+}
+
+// Simple render when no layout is used.
+...</pre></li>
     </ul>
 
 
@@ -678,7 +741,23 @@ hbs.<span class="apidocCodeKeywordSpan">loadPartials</span>(function (err, parti
         }
     });
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+            callback = options;
+            options  = {};
+        }
+
+        options || (options = {});
+
+        function load(filePath, callback) {
+            this.<span class="apidocCodeKeywordSpan">loadTemplate</span>(path.join(dirPath, filePath), options, callback);
+        }
+
+        function mapTemplates(filePaths, callback) {
+            async.map(filePaths, load.bind(this), function (err, templates) {
+if (err) { return callback(err); }
+
+var map = filePaths.reduce(function (map, filePath, i) {
+...</pre></li>
     </ul>
 
 
@@ -720,7 +799,23 @@ hbs.<span class="apidocCodeKeywordSpan">loadPartials</span>(function (err, parti
         mapTemplates.bind(this)
     ], callback);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+app.set('view engine', 'handlebars');
+
+// Middleware to expose the app's shared templates to the cliet-side of the app
+// for pages which need them.
+function exposeTemplates(req, res, next) {
+    // Uses the `ExpressHandlebars` instance to get the get the **precompiled**
+    // templates which will be shared with the client-side of the app.
+    hbs.<span class="apidocCodeKeywordSpan">loadTemplates</span>('shared/templates/', {
+cache      : app.enabled('view cache'),
+precompiled: true
+    }, function (err, templates) {
+if (err) { return next(err); }
+
+// RegExp to remove the ".handlebars" extension from the template names.
+var extRegex = new RegExp(hbs.extname + '$');
+...</pre></li>
     </ul>
 
 
